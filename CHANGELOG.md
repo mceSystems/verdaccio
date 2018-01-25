@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.0.0"></a>
+# [3.0.0](https://github.com/verdaccio/verdaccio/compare/v3.0.0-alpha.10...v3.0.0) (2018-01-22)
+
+
+### Bug Fixes
+
+* add cname to docusaurus config file ([4592049](https://github.com/verdaccio/verdaccio/commit/4592049))
+* IPv6 set up ([71a0bca](https://github.com/verdaccio/verdaccio/commit/71a0bca))
+* Update website and move it to the root ([7514d04](https://github.com/verdaccio/verdaccio/commit/7514d04))
+
+
+
 <a name="3.0.0-alpha.0"></a>
 # [3.0.0-alpha.0](https://github.com/verdaccio/verdaccio/compare/v3.0.0-0...v3.0.0-alpha.0) (2018-01-07)
 

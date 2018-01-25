@@ -24,6 +24,15 @@ module.exports = function(configHash) {
   app.set('env', process.env.NODE_ENV || 'production');
   app.use(cors());
 
+  // Mce Middleware
+  app.use( function(req, res, next) {
+	if (req.url.indexOf('branch/') !== -1) {
+		req.url = req.url.replace('branch/', 'branch');
+	}
+	console.log('at endpoit the url=' + req.url );
+	next();
+  });  
+
   // Middleware
   const error_reporting_middleware = function(req, res, next) {
     res.report_error = res.report_error || function(err) {

@@ -1,14 +1,11 @@
 {
   "name": "verdaccio",
-  "version": "3.0.0-alpha.10",
+  "version": "3.0.0",
   "description": "Private npm repository server",
-  "author": {
-    "name": "Alex Kocharin",
-    "email": "alex@kocharin.ru"
-  },
+  "author": "Alex Kocharin <alex@kocharin.ru>",
   "repository": {
     "type": "git",
-    "url": "git://github.com/verdaccio/verdaccio"
+    "url": "git://github.com/verdaccio/verdaccio.git"
   },
   "main": "build/index.js",
   "bin": {
@@ -149,7 +146,7 @@
     "code:build": "cross-env BABEL_ENV=registry babel src/ --out-dir build/ --ignore src/webui/ --copy-files",
     "pre:webpack": "rimraf static/*",
     "dev:webui": "cross-env BABEL_ENV=ui babel-node tools/dev.server.js",
-    "build:webui": "npm run pre:webpack && BABEL_ENV=ui webpack --config tools/webpack.prod.config.babel.js",
+    "build:webui": "npm run pre:webpack && cross-env BABEL_ENV=ui webpack --config tools/webpack.prod.config.babel.js",
     "build:docker": "docker build -t verdaccio . --no-cache",
     "build:docker:rpi": "docker build -f Dockerfile.rpi -t verdaccio:rpi ."
   },
@@ -161,5 +158,13 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/verdaccio/verdaccio/issues"
+  },
+  "homepage": "https://github.com/verdaccio/verdaccio#readme",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  }
 }

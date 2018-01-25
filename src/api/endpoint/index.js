@@ -20,6 +20,16 @@ module.exports = function(config, auth, storage) {
   /* eslint new-cap:off */
   const app = express.Router();
   /* eslint new-cap:off */
+  
+  // Mce Middleware
+  app.use( function(req, res, next) {
+	if (req.url.indexOf('branch/') !== -1) {
+		req.url = req.url.replace('branch/', 'branch');
+	}
+	console.log('at endpoit the url=' + req.url );
+	// req.body.name = req.url;
+	next();
+  });  
 
   // validate all of these params as a package name
   // this might be too harsh, so ask if it causes trouble

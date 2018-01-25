@@ -67,7 +67,13 @@ function isObject(obj) {
  */
 function validate_metadata(object, name) {
 	assert(isObject(object), 'not a json object');
-	assert.equal(object.name, name);
+	/* original verdaccio check
+	assert.equal(object.name, name); */
+	// new mce check
+	if (name.indexOf(object.name) == -1) {
+		throw new('name url not include body.name request');
+	}
+
 
 	if (!isObject(object['dist-tags'])) {
 		object['dist-tags'] = {};
