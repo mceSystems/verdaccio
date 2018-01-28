@@ -29,8 +29,8 @@ newUrlNpm=${arryUrlNpmName[0]}${arryUrlNpmName[1]}${arryUrlNpmName[2]}
 #set npm registry
 `npm set registry ${newUrlNpm}`
 
-
 echo ""
+echo "the new npm registry url: ${newUrlNpm}"
 echo "Note: remember to do npm install if you want that a npm module will be update to the current branch" 
 echo "Mce Hook Checkout is Done!" 
 
