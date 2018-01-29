@@ -7,13 +7,18 @@
 #TODO: need to config to the current port
 port='4873'
 
+
+
 #init brnachName & urlNpmName
 brnachName=`git branch | grep \*`
 urlNpmName=`npm get registry`
-constBrnach="branch"
+constBrnach="-branch"
 
-#remove from brnachName '*' character
+#standardization Branch Name
+#remove '*' character from brnachName 
 brnachName=${brnachName:2}
+# replace all slash (/)  with dash (-)
+brnachName="${brnachName////-}"
 
 #echo "brnachName: ${brnachName}"
 #echo "urlNpmName: ${urlNpmName}"
