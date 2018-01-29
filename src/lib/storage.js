@@ -472,8 +472,10 @@ class Storage {
           const latest = info['dist-tags'].latest;
 
           if (latest && info.versions[latest]) {
-            packages.push(info.versions[latest]);
-          } else {
+			//mce : web ui show to client  module name with brnach name. 
+		    info.versions[latest].name = locals[i];	
+			packages.push(info.versions[latest]);
+		 } else {
             self.logger.warn( {package: locals[i]}, 'package @{package} does not have a "latest" tag?' );
           }
         }
@@ -487,7 +489,7 @@ class Storage {
     };
 
     if (locals.length) {
-      getPackage(0);
+		getPackage(0);
     } else {
       callback(null, []);
     }
