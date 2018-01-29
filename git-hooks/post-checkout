@@ -10,6 +10,7 @@ port='4873'
 #init brnachName & urlNpmName
 brnachName=`git branch | grep \*`
 urlNpmName=`npm get registry`
+constBrnach="branch"
 
 #remove from brnachName '*' character
 brnachName=${brnachName:2}
@@ -23,7 +24,7 @@ arryUrlNpmName=(${urlNpmName/${port}/ })
 tLen=${#arryUrlNpmName[@]}
 arryUrlNpmName[tLen - 1]="${port}/"
 arryUrlNpmName[tLen]=${brnachName}
-newUrlNpm=${arryUrlNpmName[0]}${arryUrlNpmName[1]}${arryUrlNpmName[2]}
+newUrlNpm=${arryUrlNpmName[0]}${arryUrlNpmName[1]}${arryUrlNpmName[2]}${constBrnach}
 
 
 #set npm registry
