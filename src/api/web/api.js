@@ -22,7 +22,7 @@ const {generateGravatarUrl} = require('../../utils/user');
 module.exports = function(config, auth, storage) {
   Search.configureStorage(storage);
   const can = Middleware.allow(auth);
-
+  
   // validate all of these params as a package name
   // this might be too harsh, so ask if it causes trouble
   route.param('package', validatePkg);

@@ -4,42 +4,36 @@
 # This script change the npm url registry to the current git branch.
 # If you want to be update with npm module you must `npm install`.  
 
-#TODO: need to config to the current port
-port='4873'
+#TODO: need to config to the current address & port
+serverUrl='http://localhost:4873/'
 
 
 
-#init brnachName & urlNpmName
-brnachName=`git branch | grep \*`
+#init branchName & urlNpmName
+branchName=`git rev-parse --abbrev-ref HEAD`
 urlNpmName=`npm get registry`
-constBrnach="-branch"
+constBranch="-branch"
 
+#On Master branch the name module without name brnach. keep be minimal.
+if [ ! "$branchName" == "master" ]; then
+	
 #standardization Branch Name
-#remove '*' character from brnachName 
-brnachName=${brnachName:2}
 # replace all slash (/)  with dash (-)
-brnachName="${brnachName////-}"
+branchName="${branchName////-}"
 
-#echo "brnachName: ${brnachName}"
-#echo "urlNpmName: ${urlNpmName}"
+#Concat brnach name & "brnach-" const to the URL
+newUrlNpm=${serverUrl}${branchName}${constBranch}
 
-#prepare newUrlNpm variable as a new url registry` by new branch
-#TODO: at production need to change urlNpmName/4873/ to the current url
-arryUrlNpmName=(${urlNpmName/${port}/ })
-tLen=${#arryUrlNpmName[@]}
-arryUrlNpmName[tLen - 1]="${port}/"
-arryUrlNpmName[tLen]=${brnachName}
-newUrlNpm=${arryUrlNpmName[0]}${arryUrlNpmName[1]}${arryUrlNpmName[2]}${constBrnach}
-
+else
+	newUrlNpm=${serverUrl}
+fi
 
 #set npm registry
 `npm set registry ${newUrlNpm}`
+
+
 
 echo ""
 echo "Set npm registry url: ${newUrlNpm}"
 echo "Note: remember to do npm install if you want that a npm module will be update to the current branch" 
 echo "Mce Hook Checkout is Done!" 
-
-
-
-

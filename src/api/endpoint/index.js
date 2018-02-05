@@ -24,7 +24,7 @@ module.exports = function(config, auth, storage) {
   // Mce Middleware
   app.use( function(req, res, next) {
 	if (req.url.indexOf('branch/') !== -1) {
-		req.url = req.url.replace('branch/', 'branch');
+		req.url = req.url.replace('branch/', 'branch-');
 	}
 	console.log('at endpoit the url=' + req.url );
 	// req.body.name = req.url;
